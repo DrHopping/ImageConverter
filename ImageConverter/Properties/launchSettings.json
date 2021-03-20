@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ImageConverter": {
+      "commandName": "Project",
+      "commandLineArgs": "--source ppm.ppm --goal-format .ppm --output ppm2"
+    }
+  }
+}
