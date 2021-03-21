@@ -10,8 +10,11 @@ namespace ImageConverter.Readers
 {
     public class PpmReader : IReader
     {
-        public Image Read(TextReader stream)
-            => GetImage(GetFilteredImageString(stream));
+        public Image Read(FileStream stream)
+        {
+            using var reader = new StreamReader(stream);
+            return GetImage(GetFilteredImageString(reader));
+        }
 
         private Image GetImage(string stream)
         {

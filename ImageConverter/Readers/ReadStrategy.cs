@@ -10,7 +10,7 @@ namespace ImageConverter.Readers
 {
     public interface IReadStrategy
     {
-        Image Read(string format, TextReader stream);
+        Image Read(string format, FileStream stream);
     }
 
     public class ReadStrategy : IReadStrategy
@@ -22,7 +22,7 @@ namespace ImageConverter.Readers
             _readers = readers;
         }
 
-        public Image Read(string format, TextReader stream)
+        public Image Read(string format, FileStream stream)
         {
             var readersFormatsDictionary = GetReaderFormatsDictionary(_readers);
             if (!readersFormatsDictionary.Keys.Contains(format)) 

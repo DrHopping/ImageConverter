@@ -5,6 +5,6 @@ namespace ImageConverter.Readers
 {
     public interface IReader
     {
-        Image Read(TextReader stream);
+        Image Read(FileStream stream);
     }
 }

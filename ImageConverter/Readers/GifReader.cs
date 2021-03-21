@@ -6,7 +6,7 @@ namespace ImageConverter.Readers
 {
     public class GifReader : IReader
     {
-        public Image Read(TextReader stream)
+        public Image Read(FileStream stream)
         {
             Console.WriteLine("Gif reader");
             return new Image();

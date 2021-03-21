@@ -30,7 +30,7 @@ namespace ImageConverter
         public void Execute(string sourcePath, string outputFormat, string outputPath)
         {
             var sourceFormat = Path.GetExtension(sourcePath);
-            using var stream = new StreamReader(sourcePath);
+            using var stream = File.OpenRead(sourcePath);
             var image = _readStrategy.Read(sourceFormat, stream);
 
             outputPath += outputFormat;
