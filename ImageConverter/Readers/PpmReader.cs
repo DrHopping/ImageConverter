@@ -4,10 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
+using ImageConverter.Attributes;
 using ImageConverter.Models;
 
 namespace ImageConverter.Readers
 {
+    [Format("ppm")]
     public class PpmReader : IReader
     {
         public Image Read(FileStream stream)

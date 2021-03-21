@@ -1,8 +1,10 @@
 ﻿using System.IO;
+using ImageConverter.Attributes;
 using ImageConverter.Models;
 
 namespace ImageConverter.Writers
 {
+    [Format("ppm")]
     public class PpmWriter : IWriter
     {
         public void Write(Image image, string file)

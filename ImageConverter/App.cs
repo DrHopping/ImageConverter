@@ -32,9 +32,7 @@ namespace ImageConverter
             var sourceFormat = Path.GetExtension(sourcePath);
             using var stream = File.OpenRead(sourcePath);
             var image = _readStrategy.Read(sourceFormat, stream);
-
-            outputPath += outputFormat;
-
+            outputPath ??= sourcePath.Split('.')[0] + "." + outputFormat;
             _writeStrategy.Write(image, outputPath);
         }
     }

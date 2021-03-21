@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using ImageConverter.Attributes;
 using ImageConverter.Exceptions;
 using ImageConverter.Models;
 
@@ -33,7 +34,7 @@ namespace ImageConverter.Readers
         private Dictionary<string, IReader> GetReaderFormatsDictionary(IEnumerable<IReader> readers)
         {
             var formatDictionary = new Dictionary<string, IReader>();
-            readers.ToList().ForEach(r => formatDictionary.Add($".{r.GetType().Name.Replace("Reader", "").ToLower()}", r));
+            readers.ToList().ForEach(r => formatDictionary.Add($".{((FormatAttribute)Attribute.GetCustomAttribute(r.GetType(), typeof(FormatAttribute)))?.Format}", r));
             return formatDictionary;
         }
     }

@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
+using ImageConverter.Attributes;
 using ImageConverter.Models;
 
 namespace ImageConverter.Readers
 {
-
+    [Format("bmp")]
     public class BmpReader : IReader
     {
         private const int HeaderSize = 138;
