@@ -28,21 +28,17 @@ namespace ImageConverter.Readers
             var maxColor = ppmValues[2];
             var baseColor = 255;
 
-            var image = new Image {Width = width, Height = height};
+            var image = new Image(height, width);
             for (int i = 0; i < height; i++)
             {
-                var row = new List<Pixel>();
                 for (int j = 0; j < width * 3; j += 3)
                 {
                     var index = i * (width * 3) + j + 3;
-                    var pixel = new Pixel {Red = NormalizeColor(ppmValues[index], maxColor, baseColor), 
-                                           Green = NormalizeColor(ppmValues[index + 1], maxColor, baseColor), 
-                                           Blue = NormalizeColor(ppmValues[index + 2], maxColor, baseColor)};
-                    row.Add(pixel);
+                    image.Pixels[i,j - (j/3)*2] = new Pixel {Red = NormalizeColor(ppmValues[index], maxColor, baseColor), 
+                                                   Green = NormalizeColor(ppmValues[index + 1], maxColor, baseColor), 
+                                                   Blue = NormalizeColor(ppmValues[index + 2], maxColor, baseColor)};
                 }
-                image.Pixels.Add(row);
             }
-
             return image;
         }
 

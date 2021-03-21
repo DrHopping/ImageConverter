@@ -15,7 +15,7 @@ namespace ImageConverter.Writers
             for (int y = 0; y < image.Height; y++)
                 for (int x = 0; x < image.Width; x++)
                 {
-                    var pixel = image.Pixels[y][x];
+                    var pixel = image.Pixels[y,x];
                     writer.Write($"{pixel.Red} ");
                     writer.Write($"{pixel.Green} ");
                     writer.Write($"{pixel.Blue}\r");

@@ -6,6 +6,7 @@ using ImageConverter.Models;
 
 namespace ImageConverter.Readers
 {
+
     public class BmpReader : IReader
     {
         public Image Read(FileStream stream)
@@ -20,22 +21,19 @@ namespace ImageConverter.Readers
 
         private static Image GetImage(BinaryReader reader, int width, int height)
         {
-            var image = new Image {Height = height, Width = width};
+            var image = new Image (height, width);
             var skipAmount = ((3 * width) % 4 == 0) ? 0 : ((4 - (3 * width) % 4));
             for (int i = 0; i < height; i++)
             {
-                var row = new List<Pixel>();
                 for (int j = 0; j < width; j++)
                 {
-                    var pixel = new Pixel
+                    image.Pixels[i,j] = new Pixel
                     {
                         Blue = reader.ReadByte(),
                         Green = reader.ReadByte(),
                         Red = reader.ReadByte()
                     };
-                    row.Add(pixel);
                 }
-                image.Pixels.Add(row);
                 reader.ReadBytes(skipAmount);
             }
             return image;

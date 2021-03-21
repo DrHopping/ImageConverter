@@ -9,7 +9,7 @@ namespace ImageConverter.Readers
         public Image Read(FileStream stream)
         {
             Console.WriteLine("Gif reader");
-            return new Image();
+            return new Image(1,1);
         }
     }
 }
