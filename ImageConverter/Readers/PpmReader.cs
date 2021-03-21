@@ -31,10 +31,10 @@ namespace ImageConverter.Readers
             var image = new Image(height, width);
             for (int i = 0; i < height; i++)
             {
-                for (int j = 0; j < width * 3; j += 3)
+                for (int j = 0; j < width; j++)
                 {
-                    var index = i * (width * 3) + j + 3;
-                    image.Pixels[i,j - (j/3)*2] = new Pixel {Red = NormalizeColor(ppmValues[index], maxColor, baseColor), 
+                    var index = i * (width * 3) + (j * 3) + 3;
+                    image.Pixels[i,j] = new Pixel {Red = NormalizeColor(ppmValues[index], maxColor, baseColor), 
                                                    Green = NormalizeColor(ppmValues[index + 1], maxColor, baseColor), 
                                                    Blue = NormalizeColor(ppmValues[index + 2], maxColor, baseColor)};
                 }
