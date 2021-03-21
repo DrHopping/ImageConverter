@@ -10,8 +10,8 @@ namespace ImageConverter.Readers
 {
     public class PpmReader : IReader
     {
-        public Image Read(string stream)
-            => GetImage(GetFilteredStream(stream));
+        public Image Read(TextReader stream)
+            => GetImage(GetFilteredImageString(stream));
 
         private Image GetImage(string stream)
         {
@@ -43,8 +43,8 @@ namespace ImageConverter.Readers
             return image;
         }
 
-        private string GetFilteredStream(string stream)
-            => String.Join('\n', stream.Split('\n').Where(str => !str.StartsWith("#")));
+        private string GetFilteredImageString(TextReader stream)
+            => String.Join('\n', stream.ReadToEnd().Split('\n').Where(str => !str.StartsWith("#")));
 
         private int NormalizeColor(int color, int maxColor, int baseColor)
             => (int)Math.Floor((decimal)color / maxColor * baseColor);

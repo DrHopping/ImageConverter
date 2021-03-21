@@ -1,9 +1,10 @@
-﻿using ImageConverter.Models;
+﻿using System.IO;
+using ImageConverter.Models;
 
 namespace ImageConverter.Readers
 {
     public interface IReader
     {
-        Image Read(string stream);
+        Image Read(TextReader stream);
     }
 }
